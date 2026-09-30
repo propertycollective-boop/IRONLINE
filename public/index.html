@@ -463,6 +463,49 @@
     background: var(--card);
     color: var(--ink-soft);
   }
+  .market-groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 52px;
+  }
+  .market-group {
+    background: var(--card);
+    border-top: 2px solid var(--accent);
+    padding: 28px 24px 18px;
+  }
+  .market-group .idx {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+  }
+  .market-group h3 { font-size: 1.16rem; line-height: 1.2; margin: 10px 0 14px; }
+  .market-group ul { list-style: none; margin: 0; padding: 0; }
+  .market-group li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .market-group .core {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: var(--accent);
+    padding: 3px 8px;
+  }
+  @media (max-width: 980px) {
+    .market-groups { grid-template-columns: 1fr; }
+  }
   .markets-cols {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -682,6 +725,12 @@
   }
   @media (max-width: 560px) {
     .wrap { padding: 0 20px; }
+    .nav-inner { padding: 14px 20px; }
+    .nav-inner > .btn-solid { display: none; }
+    .market-group { padding: 24px 20px 14px; }
+    .contact-panel { grid-template-columns: minmax(0, 1fr); }
+    .contact-info, .contact-form { padding: 32px 22px; }
+    .field input, .field select, .field textarea { width: 100%; min-width: 0; }
     .cap-grid, .steps, .stat-strip { grid-template-columns: 1fr; }
     .stat { border-left: none; border-top: 1px solid color-mix(in srgb, var(--on-navy) 14%, transparent); }
     .stat:first-child { border-top: none; }
@@ -1055,17 +1104,35 @@
         <p class="intro">We start where our team's experience runs deepest &mdash; waste-to-energy &mdash; and extend into the adjacent industrial assets that share the same boilers, pressure parts, and material-handling systems.</p>
       </div>
 
-      <div class="tag-grid">
-        <span class="tag">Waste-to-Energy</span>
-        <span class="tag">Power Generation</span>
-        <span class="tag">Biomass &amp; Cogeneration</span>
-        <span class="tag">Industrial Boilers</span>
-        <span class="tag">Water &amp; Wastewater</span>
-        <span class="tag">Manufacturing</span>
-        <span class="tag">Steel</span>
-        <span class="tag">Pulp &amp; Paper</span>
-        <span class="tag">Refining</span>
-        <span class="tag">Petrochemical</span>
+      <div class="market-groups">
+        <div class="market-group">
+          <span class="idx">01 &mdash; ENERGY &amp; POWER</span>
+          <h3>Energy Recovery &amp; Power</h3>
+          <ul>
+            <li>Waste-to-Energy <span class="core">Core</span></li>
+            <li>Power Generation</li>
+            <li>Biomass &amp; Cogeneration</li>
+            <li>Industrial Boilers</li>
+          </ul>
+        </div>
+        <div class="market-group">
+          <span class="idx">02 &mdash; HEAVY INDUSTRY</span>
+          <h3>Manufacturing &amp; Materials</h3>
+          <ul>
+            <li>Manufacturing</li>
+            <li>Steel</li>
+            <li>Pulp &amp; Paper</li>
+          </ul>
+        </div>
+        <div class="market-group">
+          <span class="idx">03 &mdash; PROCESS &amp; UTILITIES</span>
+          <h3>Process &amp; Utilities</h3>
+          <ul>
+            <li>Refining</li>
+            <li>Petrochemical</li>
+            <li>Water &amp; Wastewater</li>
+          </ul>
+        </div>
       </div>
 
       <div class="markets-cols">
