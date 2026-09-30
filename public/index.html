@@ -15,59 +15,66 @@
     --panel: #EAEBE3;
     --panel-2: #DEE0D5;
     --card: #FFFFFF;
-    --ink: #10161B;
-    --ink-soft: #4A535A;
+    --ink: #161512;
+    --ink-soft: #54524C;
     --ink-faint: #7C8781;
     --line: #D5D8CD;
     --line-strong: #B7BBAC;
-    --navy: #0B1F33;
-    --navy-2: #123049;
+    --navy: #1C1B18;
+    --navy-2: #2A2824;
     --on-navy: #F3F4EF;
-    --on-navy-soft: #AEB7BF;
-    --accent: #A5812F;
-    --accent-strong: #876A26;
-    --accent-ink: #17110A;
-    --shadow: rgba(11, 31, 51, 0.14);
+    --on-navy-soft: #B5B1A8;
+    --accent: #2A2824;
+    --accent-strong: #0E0E0C;
+    --accent-ink: #F4F5F1;
+    --shadow: rgba(28, 27, 24, 0.14);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0B0E10;
-      --panel: #11161A;
-      --panel-2: #171D21;
-      --card: #12181D;
+      --bg: #0E0E0C;
+      --panel: #141412;
+      --panel-2: #1A1A17;
+      --card: #161614;
       --ink: #E7E9E3;
       --ink-soft: #A8B0A9;
       --ink-faint: #707870;
-      --line: #232A2C;
-      --line-strong: #2F3739;
-      --navy: #060C12;
-      --navy-2: #0E2033;
+      --line: #2A2926;
+      --line-strong: #373530;
+      --navy: #080807;
+      --navy-2: #1C1B18;
       --on-navy: #E7E9E3;
-      --on-navy-soft: #8FA0AC;
-      --accent: #CBA24E;
-      --accent-strong: #E0B860;
-      --accent-ink: #140E03;
+      --on-navy-soft: #A09C92;
+      --accent: #E7E5DF;
+      --accent-strong: #FFFFFF;
+      --accent-ink: #161512;
       --shadow: rgba(0, 0, 0, 0.55);
     }
   }
   :root[data-theme="dark"] {
-    --bg: #0B0E10;
-    --panel: #11161A;
-    --panel-2: #171D21;
-    --card: #12181D;
+    --bg: #0E0E0C;
+    --panel: #141412;
+    --panel-2: #1A1A17;
+    --card: #161614;
     --ink: #E7E9E3;
     --ink-soft: #A8B0A9;
     --ink-faint: #707870;
-    --line: #232A2C;
-    --line-strong: #2F3739;
-    --navy: #060C12;
-    --navy-2: #0E2033;
+    --line: #2A2926;
+    --line-strong: #373530;
+    --navy: #080807;
+    --navy-2: #1C1B18;
     --on-navy: #E7E9E3;
-    --on-navy-soft: #8FA0AC;
-    --accent: #CBA24E;
-    --accent-strong: #E0B860;
-    --accent-ink: #140E03;
+    --on-navy-soft: #A09C92;
+    --accent: #E7E5DF;
+    --accent-strong: #FFFFFF;
+    --accent-ink: #161512;
     --shadow: rgba(0, 0, 0, 0.55);
+  }
+
+  /* Dark bands: light highlights so accents stay visible on charcoal */
+  .utility-bar, .stat-band, .safety-section, .contact-info, footer {
+    --accent: #D9D6CE;
+    --accent-strong: #F3F2EE;
+    --accent-ink: #161512;
   }
 
   * { box-sizing: border-box; }
