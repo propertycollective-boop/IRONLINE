@@ -71,7 +71,7 @@
   }
 
   /* Dark bands: light highlights so accents stay visible on charcoal */
-  .utility-bar, .stat-band, .safety-section, .contact-info, footer {
+  .stat-band, .safety-section, .contact-info, footer {
     --accent: #D9D6CE;
     --accent-strong: #F3F2EE;
     --accent-ink: #161512;
@@ -126,22 +126,6 @@
   .tabular { font-variant-numeric: tabular-nums; }
   .rule { height: 1px; background: var(--line); border: none; margin: 0; }
 
-  /* ---------- UTILITY BAR ---------- */
-  .utility-bar {
-    background: var(--navy);
-    color: var(--on-navy-soft);
-  }
-  .utility-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 9px 32px;
-    display: flex;
-    justify-content: space-between;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
 
   /* ---------- NAV ---------- */
   header.nav {
@@ -232,6 +216,8 @@
     align-items: start;
     padding-bottom: 72px;
   }
+  .hero-eyebrow { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .hero-eyebrow::before { margin-bottom: 6px; }
   .hero h1 {
     font-size: clamp(2.5rem, 4.6vw, 3.7rem);
     line-height: 1.06;
@@ -722,12 +708,12 @@
     .contact-panel { grid-template-columns: 1fr; }
     .field-row { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
-    .utility-inner { font-size: 0.6rem; }
   }
   @media (max-width: 560px) {
     .wrap { padding: 0 20px; }
     .nav-inner { padding: 14px 20px; }
     .nav-inner > .btn-solid { display: none; }
+    .hero { padding-top: 44px; }
     .market-group { padding: 24px 20px 14px; }
     .contact-panel { grid-template-columns: minmax(0, 1fr); }
     .contact-info, .contact-form { padding: 32px 22px; }
@@ -737,7 +723,6 @@
     .stat { border-left: none; border-top: 1px solid color-mix(in srgb, var(--on-navy) 14%, transparent); }
     .stat:first-child { border-top: none; }
     .footer-top { grid-template-columns: 1fr; }
-    .utility-inner { flex-direction: column; gap: 4px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -746,13 +731,6 @@
 </style>
 </head>
 <body>
-
-<div class="utility-bar">
-  <div class="utility-inner">
-    <span>Industrial Construction &amp; Maintenance</span>
-    <span>Serving Industrial Plants Nationwide</span>
-  </div>
-</div>
 
 <header class="nav">
   <div class="nav-inner">
@@ -793,7 +771,7 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Industrial Construction &amp; Maintenance</div>
+          <div class="eyebrow hero-eyebrow"><span>Industrial Construction &amp; Maintenance</span><span>Serving Industrial Plants Nationwide</span></div>
           <h1>Plant reliability, built by <span class="accent-word">former operators.</span></h1>
           <p class="lede">Ironline Industrial Parts & Services delivers planned outage support, mechanical repair, and industrial maintenance with the discipline of a team that has spent its career on the plant floor, not just servicing one.</p>
           <div class="cta-row">
