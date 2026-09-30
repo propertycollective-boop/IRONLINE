@@ -22,6 +22,9 @@ Then open http://localhost:8000.
 1. Push this folder to a GitHub (or GitLab/Bitbucket) repository.
 2. In Render: **New > Blueprint**, pick the repository. Render reads `render.yaml` and creates the static site.
    (Or **New > Static Site**, publish directory `public`, build command blank.)
+   If the service was created as a **Web Service** instead, set Build Command to
+   `npm install` and Start Command to `npm start` (runs `server.js`). Note that a free
+   Web Service sleeps when idle and takes ~1 minute to wake; a Static Site does not.
 3. Every push to the main branch redeploys automatically.
 4. Custom domain: Render dashboard > the site > **Settings > Custom Domains**.
 
