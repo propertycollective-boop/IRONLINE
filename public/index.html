@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ironline Industrial Parts &amp; Services</title>
+<meta name="description" content="Ironline Industrial Parts & Services: planned outage support, boiler and mechanical repair, material-handling repair, and industrial cleaning and coatings for industrial plants nationwide.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F5F1;
+    --panel: #EAEBE3;
+    --panel-2: #DEE0D5;
+    --card: #FFFFFF;
+    --ink: #10161B;
+    --ink-soft: #4A535A;
+    --ink-faint: #7C8781;
+    --line: #D5D8CD;
+    --line-strong: #B7BBAC;
+    --navy: #0B1F33;
+    --navy-2: #123049;
+    --on-navy: #F3F4EF;
+    --on-navy-soft: #AEB7BF;
+    --accent: #A5812F;
+    --accent-strong: #876A26;
+    --accent-ink: #17110A;
+    --shadow: rgba(11, 31, 51, 0.14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B0E10;
+      --panel: #11161A;
+      --panel-2: #171D21;
+      --card: #12181D;
+      --ink: #E7E9E3;
+      --ink-soft: #A8B0A9;
+      --ink-faint: #707870;
+      --line: #232A2C;
+      --line-strong: #2F3739;
+      --navy: #060C12;
+      --navy-2: #0E2033;
+      --on-navy: #E7E9E3;
+      --on-navy-soft: #8FA0AC;
+      --accent: #CBA24E;
+      --accent-strong: #E0B860;
+      --accent-ink: #140E03;
+      --shadow: rgba(0, 0, 0, 0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0B0E10;
+    --panel: #11161A;
+    --panel-2: #171D21;
+    --card: #12181D;
+    --ink: #E7E9E3;
+    --ink-soft: #A8B0A9;
+    --ink-faint: #707870;
+    --line: #232A2C;
+    --line-strong: #2F3739;
+    --navy: #060C12;
+    --navy-2: #0E2033;
+    --on-navy: #E7E9E3;
+    --on-navy-soft: #8FA0AC;
+    --accent: #CBA24E;
+    --accent-strong: #E0B860;
+    --accent-ink: #140E03;
+    --shadow: rgba(0, 0, 0, 0.55);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Public Sans", -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+    color: var(--ink);
+  }
+  p { margin: 0; }
+  a { color: inherit; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: var(--accent-strong);
+    display: inline-block;
+  }
+  .eyebrow.on-navy { color: var(--accent); }
+  .eyebrow.on-navy::before { background: var(--accent); }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  section { position: relative; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .rule { height: 1px; background: var(--line); border: none; margin: 0; }
+
+  /* ---------- UTILITY BAR ---------- */
+  .utility-bar {
+    background: var(--navy);
+    color: var(--on-navy-soft);
+  }
+  .utility-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 9px 32px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .logo .mark { flex: none; display: block; }
+  .logo .word {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.32rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .logo .sub {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 1px;
+  }
+  nav.links {
+    display: flex;
+    gap: 30px;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  nav.links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    padding: 4px 2px;
+    border-bottom: 1px solid transparent;
+  }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--ink); border-color: var(--accent); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Public Sans", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 22px;
+    border: 1px solid var(--accent);
+    border-radius: 1px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-solid { background: var(--accent); color: var(--accent-ink); }
+  .btn-solid:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-strong); }
+  .btn-on-navy { border-color: var(--accent); color: var(--on-navy); }
+  .btn-on-navy:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .navtoggle { display: none; background: none; border: 1px solid var(--line-strong); border-radius: 1px; width: 40px; height: 40px; cursor: pointer; }
+  .navtoggle span { display: block; width: 18px; height: 1px; background: var(--ink); margin: 4px auto; }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 76px 0 0; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0,1.15fr) minmax(0,0.85fr);
+    gap: 64px;
+    align-items: start;
+    padding-bottom: 72px;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 4.6vw, 3.7rem);
+    line-height: 1.06;
+    margin-top: 20px;
+  }
+  .hero h1 .accent-word { color: var(--accent-strong); font-style: italic; }
+  .hero .lede {
+    max-width: 620px;
+    font-size: 1.12rem;
+    color: var(--ink-soft);
+    margin-top: 24px;
+  }
+  .hero .cta-row {
+    display: flex;
+    gap: 14px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .quote-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    padding: 32px 30px;
+    margin-top: 6px;
+  }
+  .quote-card .q {
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .quote-card .who {
+    margin-top: 16px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- STAT BAND (dark) ---------- */
+  .stat-band { background: var(--navy); color: var(--on-navy); }
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stat {
+    padding: 34px 28px;
+    border-left: 1px solid color-mix(in srgb, var(--on-navy) 14%, transparent);
+  }
+  .stat:first-child { border-left: none; }
+  .stat .num {
+    font-family: "Source Serif 4", serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .stat .lab {
+    margin-top: 10px;
+    font-size: 0.86rem;
+    color: var(--on-navy-soft);
+    max-width: 24ch;
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section { padding: 92px 0; }
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+    gap: 44px;
+    align-items: end;
+    margin-bottom: 52px;
+  }
+  .section-head h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-top: 16px; }
+  .section-head .intro { color: var(--ink-soft); font-size: 1.02rem; }
+  .alt { background: var(--panel); }
+
+  /* ---------- CAPABILITIES ---------- */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .cap-card {
+    background: var(--card);
+    border-top: 2px solid var(--accent);
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 210px;
+  }
+  .cap-card .idx {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+  }
+  .cap-card h3 {
+    font-size: 1.24rem;
+    line-height: 1.15;
+    font-weight: 600;
+  }
+  .cap-card p { color: var(--ink-soft); font-size: 0.93rem; }
+
+  .tech-card { background: var(--card); border-top: 2px solid var(--accent); padding: 30px 24px; display: flex; flex-direction: column; gap: 12px; min-height: 210px; }
+  .tech-card .seal { width: 34px; height: 34px; flex: none; }
+  .tech-card .idx { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.08em; }
+  .tech-card h3 { font-size: 1.08rem; line-height: 1.2; font-weight: 600; }
+  .tech-card p { color: var(--ink-soft); font-size: 0.9rem; }
+
+  .roadmap-strip {
+    margin-top: 1px;
+    padding: 24px 28px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .roadmap-strip .lbl {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    flex: none;
+  }
+  .roadmap-strip .items { display: flex; gap: 10px; flex-wrap: wrap; font-size: 0.86rem; color: var(--ink-soft); }
+  .roadmap-strip .items span {
+    border: 1px solid var(--line-strong);
+    padding: 5px 12px;
+    white-space: nowrap;
+  }
+
+  /* ---------- WHY / PULL QUOTE ---------- */
+  .pull {
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    line-height: 1.28;
+    max-width: 880px;
+    color: var(--ink);
+    padding-left: 28px;
+    border-left: 3px solid var(--accent);
+    margin-bottom: 60px;
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .credential-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 44px;
+  }
+  .reach-section { border-top: 1px solid var(--line-strong); }
+  .reach-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  .reach-stats .context-box p.note { margin-top: 6px; }
+  .regions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .region-block h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 10px;
+    margin: 0 0 14px;
+  }
+  .region-block h4 .count {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .region-block .tag-grid { margin-bottom: 0; }
+  .reach-footnote {
+    margin-top: 32px;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 980px) {
+    .reach-stats { grid-template-columns: 1fr; }
+    .regions-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .regions-grid { grid-template-columns: 1fr; }
+  }
+  .pillar { border-top: 1px solid var(--line-strong); padding-top: 20px; }
+  .pillar h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 10px; }
+  .pillar p { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- MARKETS ---------- */
+  .tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 52px;
+  }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    border: 1px solid var(--line-strong);
+    padding: 9px 16px;
+    background: var(--card);
+    color: var(--ink-soft);
+  }
+  .markets-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+  table.spec {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  table.spec caption {
+    text-align: left;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+  table.spec th, table.spec td {
+    text-align: left;
+    padding: 13px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  table.spec th {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  table.spec td.n { text-align: right; font-variant-numeric: tabular-nums; font-family: "Source Serif 4", serif; font-weight: 600; font-size: 1.05rem; }
+  table.spec tfoot td { border-bottom: none; padding-top: 16px; color: var(--ink-faint); font-size: 0.82rem; line-height: 1.6; }
+  .table-wrap { overflow-x: auto; }
+
+  .context-box {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--accent);
+    padding: 26px;
+  }
+  .context-box .num {
+    font-family: "Source Serif 4", serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--ink);
+  }
+  .context-box p { color: var(--ink-soft); font-size: 0.9rem; margin-top: 10px; }
+  .context-box a { color: var(--accent-strong); text-decoration: underline; }
+
+  /* ---------- SAFETY (dark band) ---------- */
+  .safety-section { background: var(--navy); color: var(--on-navy); }
+  .safety-cols {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 52px;
+  }
+  .safety-lead h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--on-navy); }
+  .safety-lead p { color: var(--on-navy-soft); margin-top: 18px; }
+  .safety-list { display: flex; flex-direction: column; gap: 0; }
+  .safety-item {
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid color-mix(in srgb, var(--on-navy) 16%, transparent);
+  }
+  .safety-item:last-child { border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 16%, transparent); }
+  .safety-item .bar { background: var(--accent); }
+  .safety-item strong { display: block; margin-bottom: 5px; color: var(--on-navy); font-size: 1.02rem; }
+  .safety-item span.detail { color: var(--on-navy-soft); font-size: 0.92rem; }
+
+  /* ---------- APPROACH ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+  .step {
+    padding: 24px 20px 0;
+    border-left: 1px solid var(--line);
+  }
+  .step:first-child { border-left: none; }
+  .step .step-num {
+    font-family: "Source Serif 4", serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent-strong);
+    line-height: 1;
+  }
+  .step h3 { font-size: 1.02rem; font-weight: 600; margin: 14px 0 8px; }
+  .step p { font-size: 0.86rem; color: var(--ink-soft); }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust-strip {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+  }
+  .trust-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 40px;
+    justify-content: space-between;
+  }
+  .trust-item {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    flex: 1 1 200px;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-panel {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    border: 1px solid var(--line);
+  }
+  .contact-info {
+    padding: 48px 42px;
+    background: var(--navy);
+    color: var(--on-navy);
+  }
+  .contact-info h2 { color: var(--on-navy); font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+  .contact-info p { color: var(--on-navy-soft); margin-top: 18px; font-size: 0.96rem; }
+  .contact-info .accent-line { width: 40px; height: 2px; background: var(--accent); margin-bottom: 20px; }
+  .contact-form { padding: 48px 42px; background: var(--card); display: flex; flex-direction: column; gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .field input, .field select, .field textarea {
+    font-family: "Public Sans", sans-serif;
+    font-size: 0.95rem;
+    padding: 11px 12px;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: 1px;
+    color: var(--ink);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .contact-form .submit-row { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+  .contact-form .fineprint { font-size: 0.78rem; color: var(--ink-faint); }
+  .confirm {
+    display: none;
+    padding: 20px;
+    border: 1px solid var(--accent);
+    background: var(--panel);
+    font-size: 0.95rem;
+  }
+  .confirm strong { color: var(--accent-strong); }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--navy); color: var(--on-navy-soft); padding: 56px 0 30px; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 14%, transparent);
+  }
+  .footer-top .word { color: var(--on-navy); font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.2rem; }
+  .footer-top .tagline { margin-top: 14px; font-size: 0.9rem; max-width: 30ch; }
+  .footer-col h4 {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-navy);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .footer-col a { display: block; text-decoration: none; color: var(--on-navy-soft); font-size: 0.88rem; margin-bottom: 10px; }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 980px) {
+    nav.links { display: none; }
+    .navtoggle { display: block; }
+    .hero-grid { grid-template-columns: 1fr; padding-bottom: 48px; }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-left: none; }
+    .cap-grid { grid-template-columns: repeat(2, 1fr); }
+    .section-head { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .markets-cols { grid-template-columns: 1fr; }
+    .safety-cols { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .step { border-left: none; border-top: 1px solid var(--line); padding-top: 20px; }
+    .contact-panel { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .utility-inner { font-size: 0.6rem; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    .cap-grid, .steps, .stat-strip { grid-template-columns: 1fr; }
+    .stat { border-left: none; border-top: 1px solid color-mix(in srgb, var(--on-navy) 14%, transparent); }
+    .stat:first-child { border-top: none; }
+    .footer-top { grid-template-columns: 1fr; }
+    .utility-inner { flex-direction: column; gap: 4px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="utility-inner">
+    <span>Industrial Construction &amp; Maintenance</span>
+    <span>Serving Industrial Plants Nationwide</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <svg class="mark" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+        <line x1="3" y1="15" x2="27" y2="15" stroke="var(--accent)" stroke-width="2"></line>
+        <circle cx="9" cy="15" r="2.6" fill="var(--navy)"></circle>
+        <circle cx="21" cy="15" r="2.6" fill="var(--navy)"></circle>
+      </svg>
+      <span>
+        <span class="word">IRONLINE</span>
+        <span class="sub">Industrial Parts &amp; Services</span>
+      </span>
+    </a>
+    <nav class="links">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#reach">Reach</a>
+      <a href="#markets">Markets</a>
+      <a href="#safety">Safety</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-solid" style="margin-left:auto">Schedule a Consultation</a>
+    <button class="navtoggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="links" id="mobileNav" style="display:none; flex-direction:column; padding:0 32px 20px; gap:16px;">
+    <a href="#capabilities">Capabilities</a>
+    <a href="#markets">Markets</a>
+    <a href="#safety">Safety</a>
+    <a href="#approach">Approach</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Industrial Construction &amp; Maintenance</div>
+          <h1>Plant reliability, built by <span class="accent-word">former operators.</span></h1>
+          <p class="lede">Ironline Industrial Parts & Services delivers planned outage support, mechanical repair, and industrial maintenance with the discipline of a team that has spent its career on the plant floor, not just servicing one.</p>
+          <div class="cta-row">
+            <a href="#capabilities" class="btn btn-solid">View Capabilities</a>
+            <a href="#contact" class="btn btn-ghost">Talk to Our Team</a>
+          </div>
+        </div>
+        <div>
+          <div class="quote-card">
+            <p class="q">&ldquo;Customers buy schedule certainty and safe execution &mdash; not price alone.&rdquo;</p>
+            <p class="who">Ironline Operating Principle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stat-band">
+    <div class="wrap">
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="num tabular">63</div>
+          <div class="lab">Active waste-to-energy facilities across our national target market</div>
+        </div>
+        <div class="stat">
+          <div class="num tabular">4</div>
+          <div class="lab">Core service lines live from day one, each proven on real outage work</div>
+        </div>
+        <div class="stat">
+          <div class="num tabular">10+</div>
+          <div class="lab">Industrial sectors in scope, from energy recovery to petrochemical</div>
+        </div>
+        <div class="stat">
+          <div class="num tabular">1</div>
+          <div class="lab">Named safety lead on every job site &mdash; with authority to stop work</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="capabilities">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Capabilities</div>
+          <h2>Four service lines, proven before they're pitched.</h2>
+        </div>
+        <p class="intro">Our leadership built its reputation on the plant floor before it built a company. These are the capabilities we bring to your site first, each backed by dedicated crews, named supervision, and a documented safety system.</p>
+      </div>
+
+      <div class="cap-grid">
+        <div class="cap-card">
+          <span class="idx">01 &mdash; OUTAGE</span>
+          <h3>Planned Outage &amp; Maintenance Support</h3>
+          <p>Compressed-window outage execution, planned and staffed with an operator's sense of what a delay actually costs.</p>
+        </div>
+        <div class="cap-card">
+          <span class="idx">02 &mdash; MECHANICAL</span>
+          <h3>Boiler &amp; Mechanical Repair</h3>
+          <p>Pressure-part and mechanical repair under a documented quality system built to National Board (R Certificate) standards.</p>
+        </div>
+        <div class="cap-card">
+          <span class="idx">03 &mdash; MATERIAL HANDLING</span>
+          <h3>Material-Handling Repair &amp; Replacement</h3>
+          <p>Conveyors, cranes, and handling systems restored by crews who understand material flow, not just individual components.</p>
+        </div>
+        <div class="cap-card">
+          <span class="idx">04 &mdash; SURFACE</span>
+          <h3>Industrial Cleaning, Blasting &amp; Coatings</h3>
+          <p>Surface preparation, blasting, and coatings executed to environmental and safety requirements &mdash; never shortcuts.</p>
+        </div>
+      </div>
+
+      <div class="roadmap-strip">
+        <span class="lbl">Where we're headed next</span>
+        <div class="items">
+          <span>Capital-project execution &amp; plant modifications</span>
+          <span>Emergency industrial repair response</span>
+          <span>Broader EPC / design-build</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">The Ironline Standard</div>
+      <p class="pull" style="margin-top:20px;">The craft behind this business took years to build on the plant floor. Ironline exists to put that level of skill in front of more plants than a single operation could keep it busy on.</p>
+
+      <div class="credential-row">
+        <span class="tag">Certified Welders</span>
+        <span class="tag">Boiler &amp; Pressure-Part Mechanics</span>
+        <span class="tag">Millwrights &amp; Riggers</span>
+        <span class="tag">In-House Parts Manufacturing</span>
+        <span class="tag">National Board &amp; ASME Certified</span>
+        <span class="tag">NDE &amp; Inspection Coordination</span>
+        <span class="tag">Scaffold &amp; Access Certified</span>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <h3>Operator-Trained Leadership</h3>
+          <p>Our senior field leaders spent their careers running plant floors and turnarounds before they ran a company. That judgment shows up in every estimate and every schedule.</p>
+        </div>
+        <div class="pillar">
+          <h3>Field-Tested Craft</h3>
+          <p>Certified welders, boiler and pressure-part mechanics, millwrights, and riggers. Every technician is signed off against a documented competency standard before working unsupervised on a customer site.</p>
+        </div>
+        <div class="pillar">
+          <h3>Manufactured In-House, Certified to Code</h3>
+          <p>We don't just repair parts &mdash; we manufacture them, under the same quality system and code certifications, including National Board and ASME coverage, that back our internal operations and are being carried over to Ironline as the business stands up.</p>
+        </div>
+        <div class="pillar">
+          <h3>Relationships Built Over Years</h3>
+          <p>Decades of relationships with facility owners, OEMs, suppliers, and engineering firms across the national industrial base &mdash; we're not cold-calling your plant manager for the first time.</p>
+        </div>
+        <div class="pillar">
+          <h3>Safety &amp; Outage Discipline</h3>
+          <p>Outage windows are unforgiving and hazards are real. We plan for both before we plan for revenue, and we walk away from work that compromises either.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="certifications">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Certifications &amp; Compliance</div>
+          <h2>Credentialed to do the work, not just to bid on it.</h2>
+        </div>
+        <p class="intro">Every certification this work requires is already in place inside our operations, and is being carried directly into the Ironline entity as the business is formally established.</p>
+      </div>
+
+      <div class="cap-grid">
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / BOILER CODE</span>
+          <h3>National Board &ldquo;R&rdquo; Certificate</h3>
+          <p>Authorization to repair and alter boilers and pressure-retaining items under a documented, NBIC-compliant quality system.</p>
+        </div>
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / FABRICATION</span>
+          <h3>ASME Code Certification</h3>
+          <p>Covers fabrication and assembly of new pressure-part and code items manufactured in-house.</p>
+        </div>
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / PUBLIC WORK</span>
+          <h3>Public Works Contractor Registration</h3>
+          <p>Registered in New Jersey, our home state, with additional state registrations pursued as public-sector work requires &mdash; every state gates this separately, so we register where the work is.</p>
+        </div>
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / CLASSIFICATION</span>
+          <h3>State Contractor Classification</h3>
+          <p>Trade-category and maximum-workload classification for public building projects, starting with New Jersey's DPMC and extending state by state as we bid there.</p>
+        </div>
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / TRADE LICENSES</span>
+          <h3>State &amp; Local Trade Licenses</h3>
+          <p>Electrical, plumbing, HVAC, and environmental licensing as required by jurisdiction.</p>
+        </div>
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / SAFETY</span>
+          <h3>Customer Safety Prequalification</h3>
+          <p>Verified incident rates, written safety programs, and training records through ISNetworld and Avetta.</p>
+        </div>
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / SURETY</span>
+          <h3>Bonding &amp; Insurance</h3>
+          <p>Bid, performance, and payment bonds, plus general liability, umbrella, and pollution coverage where scope requires.</p>
+        </div>
+        <div class="tech-card">
+          <svg class="seal" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="14" r="9.5" stroke="var(--accent)" stroke-width="1.6"></circle>
+            <path d="M18 8l1.5 3.1 3.4.5-2.5 2.4.6 3.4-3-1.6-3 1.6.6-3.4-2.5-2.4 3.4-.5L18 8z" fill="var(--accent)"></path>
+            <path d="M13 20.5l-1.8 7.5 3.6-1.8 1.8 2.7 1.8-5.4M23 20.5l1.8 7.5-3.6-1.8-1.8 2.7-1.8-5.4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="idx">CRED / FEDERAL</span>
+          <h3>SAM.gov Registration</h3>
+          <p>Federal entity registration for eligibility on federal contracting opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt reach-section" id="reach">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">National Reach</div>
+          <h2>Built by people who've already worked coast to coast.</h2>
+        </div>
+        <p class="intro">Long before Ironline existed as a company, this team's field crews were rotating through outages, repairs, and turnarounds at industrial sites across the country. That reach is the foundation this business was built on.</p>
+      </div>
+
+      <div class="reach-stats">
+        <div class="context-box">
+          <div class="eyebrow" style="margin-bottom:12px;">Footprint</div>
+          <div class="num tabular">24 States</div>
+          <p class="note">Field experience spans coast to coast, Hawaii included.</p>
+        </div>
+        <div class="context-box">
+          <div class="eyebrow" style="margin-bottom:12px;">Locations</div>
+          <div class="num tabular">90+</div>
+          <p class="note">Industrial and processing sites where our people have completed work.</p>
+        </div>
+        <div class="context-box">
+          <div class="eyebrow" style="margin-bottom:12px;">Tenure</div>
+          <div class="num tabular">Career-Long</div>
+          <p class="note">Rotational field assignments, not a one-off project team.</p>
+        </div>
+      </div>
+
+      <div class="regions-grid">
+        <div class="region-block">
+          <h4>Northeast <span class="count">5 states</span></h4>
+          <div class="tag-grid">
+            <span class="tag">Connecticut</span>
+            <span class="tag">Massachusetts</span>
+            <span class="tag">New Jersey</span>
+            <span class="tag">New York</span>
+            <span class="tag">Pennsylvania</span>
+          </div>
+        </div>
+        <div class="region-block">
+          <h4>Mid-Atlantic &amp; Southeast <span class="count">6 states</span></h4>
+          <div class="tag-grid">
+            <span class="tag">Virginia</span>
+            <span class="tag">Maryland</span>
+            <span class="tag">North Carolina</span>
+            <span class="tag">South Carolina</span>
+            <span class="tag">Georgia</span>
+            <span class="tag">Florida</span>
+          </div>
+        </div>
+        <div class="region-block">
+          <h4>Midwest &amp; Great Lakes <span class="count">7 states</span></h4>
+          <div class="tag-grid">
+            <span class="tag">Ohio</span>
+            <span class="tag">Michigan</span>
+            <span class="tag">Indiana</span>
+            <span class="tag">Illinois</span>
+            <span class="tag">Wisconsin</span>
+            <span class="tag">Iowa</span>
+            <span class="tag">Missouri</span>
+          </div>
+        </div>
+        <div class="region-block">
+          <h4>South &amp; Central <span class="count">5 states</span></h4>
+          <div class="tag-grid">
+            <span class="tag">Texas</span>
+            <span class="tag">Oklahoma</span>
+            <span class="tag">Arkansas</span>
+            <span class="tag">Tennessee</span>
+            <span class="tag">Alabama</span>
+          </div>
+        </div>
+        <div class="region-block">
+          <h4>Pacific <span class="count">1 state</span></h4>
+          <div class="tag-grid">
+            <span class="tag">Hawaii</span>
+          </div>
+        </div>
+      </div>
+      <p class="reach-footnote">Plus completed work at facilities in Ontario and Quebec, Canada.</p>
+    </div>
+  </section>
+
+  <section class="section" id="markets">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Markets We Serve</div>
+          <h2>Built for plants that can't afford downtime.</h2>
+        </div>
+        <p class="intro">We start where our team's experience runs deepest &mdash; waste-to-energy &mdash; and extend into the adjacent industrial assets that share the same boilers, pressure parts, and material-handling systems.</p>
+      </div>
+
+      <div class="tag-grid">
+        <span class="tag">Waste-to-Energy</span>
+        <span class="tag">Power Generation</span>
+        <span class="tag">Biomass &amp; Cogeneration</span>
+        <span class="tag">Industrial Boilers</span>
+        <span class="tag">Water &amp; Wastewater</span>
+        <span class="tag">Manufacturing</span>
+        <span class="tag">Steel</span>
+        <span class="tag">Pulp &amp; Paper</span>
+        <span class="tag">Refining</span>
+        <span class="tag">Petrochemical</span>
+      </div>
+
+      <div class="markets-cols">
+        <div class="context-box">
+          <div class="eyebrow" style="margin-bottom:12px;">National Footprint</div>
+          <div class="num tabular">63 Facilities</div>
+          <p>Active waste-to-energy facilities across 18 states nationwide &mdash; the core of our target market, with adjacent industrial plants and public work layered on as licensing and bonding come online. Source: <a href="https://wtert.org/global-waste-to-energy-atlas/united-states/" target="_blank" rel="noopener">WtERT Global Waste-to-Energy Atlas</a>.</p>
+        </div>
+
+        <div class="context-box">
+          <div class="eyebrow" style="margin-bottom:12px;">Market Context</div>
+          <div class="num tabular">$1.64B &rarr; $2.67B</div>
+          <p>North America's industrial maintenance services market, 2022 to a projected 2030, growing roughly 6.3% a year. Our own focus &mdash; boiler outages and mechanical construction &mdash; sits inside and beyond this figure. Source: <a href="https://www.databridgemarketresearch.com/reports/north-america-industrial-maintenance-services-in-operational-improvement-and-operational-maintenance-market" target="_blank" rel="noopener">Data Bridge Market Research</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section safety-section" id="safety">
+    <div class="wrap">
+      <div class="safety-cols">
+        <div class="safety-lead">
+          <div class="eyebrow on-navy">Safety</div>
+          <h2>Safety is a condition of work &mdash; never a variable in the schedule.</h2>
+          <p>Working inside another owner's plant means giving up home-field familiarity. We accept a job only when the hazards are understood, the controls are staffed, and any worker on site can stop the work.</p>
+        </div>
+        <div class="safety-list">
+          <div class="safety-item">
+            <span class="bar"></span>
+            <div><strong>Universal stop-work authority</strong><span class="detail">Every worker on every job can stop work for a safety concern &mdash; no exceptions, no retaliation, documented restart.</span></div>
+          </div>
+          <div class="safety-item">
+            <span class="bar"></span>
+            <div><strong>A named supervisor and safety lead, every job</strong><span class="detail">One Ironline supervisor and one dedicated site safety lead are assigned before mobilization &mdash; never left to a rotating crew.</span></div>
+          </div>
+          <div class="safety-item">
+            <span class="bar"></span>
+            <div><strong>Hazards reviewed at bid time</strong><span class="detail">Energy isolation, confined space, hot work, and lifting hazards get planned and priced before the estimate is submitted, not discovered in the field.</span></div>
+          </div>
+          <div class="safety-item">
+            <span class="bar"></span>
+            <div><strong>High-hazard work earns its way in</strong><span class="detail">Confined-space entry, boiler tube work, and heavy lifts are sequenced behind proven, lower-hazard jobs with our most experienced crews.</span></div>
+          </div>
+          <div class="safety-item">
+            <span class="bar"></span>
+            <div><strong>Code-aligned boiler work</strong><span class="detail">Boiler and pressure-part repair follows a documented quality system built to National Board (R Certificate) standards.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">How We Engage</div>
+          <h2>From first call to closeout.</h2>
+        </div>
+        <p class="intro">A straightforward path from a site conversation to a completed job, with the same review gates we'd want a contractor to use on our own plant.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">I.</div>
+          <h3>Discovery &amp; Site Assessment</h3>
+          <p>We walk the site, review the outage calendar and installed equipment, and understand the problem before proposing scope.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">II.</div>
+          <h3>Scope &amp; Estimate</h3>
+          <p>Labor, equipment, materials, and risk are built into a reviewed estimate &mdash; priced from real cost, not a rough number.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">III.</div>
+          <h3>Award &amp; Mobilization</h3>
+          <p>Contract terms, insurance, and staffing are confirmed, and a named supervisor and safety lead are assigned before crews arrive.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">IV.</div>
+          <h3>Execution &amp; Reporting</h3>
+          <p>Daily hours and progress are tracked against plan, with changes documented and communicated as they happen, not at closeout.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">V.</div>
+          <h3>Closeout &amp; Lessons Learned</h3>
+          <p>Final documentation, a completed punch list, and a debrief that feeds directly into how we plan your next outage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-strip">
+    <div class="wrap trust-inner">
+      <span class="trust-item">OSHA-Aligned Safety Program</span>
+      <span class="trust-item">Built to ISNetworld / Avetta Prequalification Standards</span>
+      <span class="trust-item">National Board (R) Quality System</span>
+    </div>
+  </div>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="contact-panel">
+        <div class="contact-info">
+          <div class="accent-line"></div>
+          <div class="eyebrow on-navy">Get Started</div>
+          <h2 style="margin-top:16px;">Request a capability assessment.</h2>
+          <p>Tell us about your facility and your next outage or maintenance need. A member of our team will follow up within one business day to scope the work and, where useful, walk the site with you.</p>
+          <p style="margin-top:26px;">Ironline Industrial Parts & Services is an independent industrial construction and maintenance contractor.</p>
+        </div>
+        <form class="contact-form" id="leadForm">
+          <div class="field-row">
+            <div class="field">
+              <label for="fName">Name</label>
+              <input id="fName" name="name" type="text" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="fCompany">Company</label>
+              <input id="fCompany" name="company" type="text" required autocomplete="organization">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fEmail">Email</label>
+              <input id="fEmail" name="email" type="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="fFacility">Facility Type</label>
+              <select id="fFacility" name="facility">
+                <option>Waste-to-Energy</option>
+                <option>Power Generation / Cogeneration</option>
+                <option>Industrial Boiler</option>
+                <option>Water / Wastewater</option>
+                <option>Manufacturing / Steel / Pulp &amp; Paper</option>
+                <option>Refining / Petrochemical</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fMessage">What do you need?</label>
+            <textarea id="fMessage" name="message" rows="3" placeholder="Upcoming outage window, a repair you're scoping, a recurring maintenance need..."></textarea>
+          </div>
+          <div class="submit-row">
+            <button type="submit" class="btn btn-solid">Send Request</button>
+            <span class="fineprint">We respond within one business day.</span>
+          </div>
+          <div class="confirm" id="confirmMsg"><strong>Request received.</strong> A member of our team will follow up within one business day.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="word">IRONLINE</div>
+        <p class="tagline">Industrial construction and maintenance for plants that can't afford downtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#markets">Markets</a>
+        <a href="#safety">Safety</a>
+      </div>
+      <div class="footer-col">
+        <h4>Work With Us</h4>
+        <a href="#approach">Our Approach</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Coverage</h4>
+        <a href="#reach">National Reach</a>
+        <a href="#markets">Target Markets</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom" style="padding-left:0; padding-right:0;">
+      <span>&copy; 2026 Ironline Industrial Parts & Services. All rights reserved.</span>
+      <span>An independent industrial construction &amp; maintenance contractor.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+    if (toggle && mobileNav) {
+      toggle.addEventListener('click', function () {
+        var open = mobileNav.style.display === 'flex';
+        mobileNav.style.display = open ? 'none' : 'flex';
+      });
+      mobileNav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { mobileNav.style.display = 'none'; });
+      });
+    }
+
+    var form = document.getElementById('leadForm');
+    var confirm = document.getElementById('confirmMsg');
+    if (form && confirm) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        form.querySelectorAll('input, select, textarea, button').forEach(function (el) { el.disabled = true; });
+        confirm.style.display = 'block';
+      });
+    }
+  })();
+</script>
+</body>
+</html>
