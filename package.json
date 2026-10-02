@@ -2,7 +2,7 @@
   "name": "ironline-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Ironline Industrial Parts & Services website",
+  "description": "Ironline Industrial Parts & Field Services website",
   "scripts": {
     "start": "node server.js"
   },
