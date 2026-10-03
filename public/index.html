@@ -412,6 +412,12 @@
   .st:hover, .st.is-active { fill: var(--map-open-hover); }
   .st.worked:hover, .st.worked.is-active { fill: var(--map-worked-hover); }
   .map-dim .st:not(.in-region) { opacity: 0.22; }
+  .state-pick { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.86rem; color: var(--ink-soft); }
+  .state-pick select {
+    flex: 1 1 200px; min-width: 0; font: inherit; font-size: 0.95rem; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--line-strong); border-radius: 1px; padding: 10px 12px;
+  }
+  .state-pick select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
   .map-readout {
     min-height: 3.2em; border-left: 3px solid var(--accent); padding: 6px 0 6px 14px;
     font-size: 0.92rem; color: var(--ink-soft);
@@ -739,6 +745,11 @@
     .wrap { padding: 0 20px; }
     .nav-inner { padding: 14px 20px; }
     .nav-inner > .btn-solid { display: none; }
+    #mobileNav a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .roadmap-strip .items span { white-space: normal; }
+    .footer-col a { padding: 9px 0; margin-bottom: 0; }
+    .reach-map { padding: 14px 10px 16px; }
+    .legend-stat { grid-template-columns: 1fr; gap: 6px; }
     .logo .sub { letter-spacing: 0.06em; white-space: nowrap; }
     .hero { padding-top: 44px; }
     .market-group { padding: 24px 20px 14px; }
@@ -750,6 +761,14 @@
     .stat { border-left: none; border-top: 1px solid color-mix(in srgb, var(--on-navy) 14%, transparent); }
     .stat:first-child { border-top: none; }
     .footer-top { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 360px) {
+    .nav-inner { padding: 14px 16px; gap: 12px; }
+    .wrap { padding: 0 16px; }
+    .logo { gap: 8px; }
+    .logo .word { font-size: 1.15rem; }
+    .logo .sub { font-size: 0.52rem; letter-spacing: 0.04em; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -783,8 +802,10 @@
     <a href="#contact" class="btn btn-solid" style="margin-left:auto">Schedule a Consultation</a>
     <button class="navtoggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
-  <nav class="links" id="mobileNav" style="display:none; flex-direction:column; padding:0 32px 20px; gap:16px;">
+  <nav class="links" id="mobileNav" style="display:none; flex-direction:column; padding:0 32px 16px; gap:0;">
     <a href="#capabilities">Capabilities</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#reach">Reach</a>
     <a href="#markets">Markets</a>
     <a href="#safety">Safety</a>
     <a href="#approach">Approach</a>
@@ -1030,6 +1051,10 @@
       <div class="reach-layout">
         <figure class="reach-map">
           <svg id="usMap" viewBox="0 0 975 610" role="img" aria-label="Map of the United States. The 24 states where our crews have completed field work are shaded dark: Alabama, Arkansas, Connecticut, Florida, Georgia, Hawaii, Illinois, Indiana, Iowa, Maryland, Massachusetts, Michigan, Missouri, New Jersey, New York, North Carolina, Ohio, Oklahoma, Pennsylvania, South Carolina, Tennessee, Texas, Virginia and Wisconsin."></svg>
+          <label class="state-pick">
+            <span>Or choose a state</span>
+            <select id="stateSelect"><option value="">Select a state&hellip;</option></select>
+          </label>
           <div class="map-readout" id="mapReadout" aria-live="polite"><strong>Nationwide coverage</strong>Tap or hover a state, or pick a region.</div>
         </figure>
 
@@ -1354,6 +1379,8 @@
           : 'Available. We mobilize crews nationwide.' +
             '<a href="#contact" class="btn btn-solid map-cta" data-state="' + displayName(f) + '">Get in touch about ' + displayName(f) + '</a>');
       nodes.forEach(function (n) { n.classList.toggle('is-active', n.__id === f.id); });
+      var sel = document.getElementById('stateSelect');
+      if (sel) sel.value = f.id;
     }
 
     function bind(path, f) {
@@ -1411,6 +1438,22 @@
         bind(p, f);
         svg.appendChild(p);
       });
+
+      // Dropdown for small screens, where states like Rhode Island are too small to tap.
+      var pick = document.getElementById('stateSelect');
+      if (pick) {
+        states.slice().sort(function (a, b) { return a.properties.name.localeCompare(b.properties.name); })
+          .forEach(function (f) {
+            var o = document.createElement('option');
+            o.value = f.id;
+            o.textContent = f.properties.name + (regionOf[f.id] ? ' — project experience' : '');
+            pick.appendChild(o);
+          });
+        pick.addEventListener('change', function () {
+          var f = states.find(function (x) { return x.id === pick.value; });
+          if (f) show(f);
+        });
+      }
 
     }).catch(function () {
       readout.innerHTML = '<strong>24 states, coast to coast</strong>The map could not load right now.';
