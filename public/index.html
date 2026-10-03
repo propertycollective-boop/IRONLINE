@@ -385,7 +385,7 @@
   .reach-section { border-top: 1px solid var(--line-strong); }
   .reach-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
@@ -414,20 +414,13 @@
     font-size: 0.92rem; color: var(--ink-soft);
   }
   .map-readout strong { color: var(--ink); display: block; font-size: 1rem; }
-  .reach-legend {
-    background: var(--card); padding: 28px;
-    display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: 22px 36px; align-items: start;
-  }
-  .legend-side { display: flex; flex-direction: column; gap: 18px; }
+  .reach-legend { background: var(--card); padding: 28px 26px; display: flex; flex-direction: column; gap: 22px; }
   .legend-keys { display: flex; flex-direction: column; gap: 10px; }
   .legend-key { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: var(--ink-soft); }
   .legend-key .sw { width: 18px; height: 18px; flex: none; border: 1px solid var(--line-strong); }
   .legend-key .sw.worked { background: var(--ink); border-color: var(--ink); }
   .legend-key .sw.open { background: var(--panel-2); }
   .legend-stats { border-top: 1px solid var(--line); }
-  .legend-stat:first-child { padding-top: 0; }
-  .legend-stats { border-top: none; }
   .legend-stat { display: grid; grid-template-columns: 7.2rem 1fr; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
   .legend-stat .num { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.7rem; line-height: 1; color: var(--ink); }
   .legend-stat .num.word { font-size: 1.15rem; }
@@ -447,7 +440,7 @@
   .region-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
   .reach-footnote { font-size: 0.84rem; color: var(--ink-faint); }
   @media (max-width: 980px) {
-    .reach-legend { grid-template-columns: minmax(0, 1fr); }
+    .reach-layout { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 560px) {
     .reach-map { padding: 18px 14px 16px; }
@@ -1035,12 +1028,9 @@
         </figure>
 
         <aside class="reach-legend" aria-label="Map legend">
-          <div class="legend-side">
           <div class="legend-keys">
             <div class="legend-key"><span class="sw worked"></span>Project experience</div>
             <div class="legend-key"><span class="sw open"></span>Available</div>
-          </div>
-          <p class="reach-footnote">Plus completed work at facilities in Ontario and Quebec, Canada.</p>
           </div>
 
           <div class="legend-stats">
@@ -1057,6 +1047,8 @@
             <button type="button" class="region-btn" data-region="sc" aria-pressed="false">South &amp; Central <span class="count">5 states</span></button>
             <button type="button" class="region-btn" data-region="pac" aria-pressed="false">Pacific <span class="count">1 state</span></button>
           </div>
+
+          <p class="reach-footnote">Plus completed work at facilities in Ontario and Quebec, Canada.</p>
         </aside>
       </div>
     </div>
@@ -1364,24 +1356,8 @@
     fetch('vendor/states-10m.json').then(function (r) { return r.json(); }).then(function (us) {
       var all = topojson.feature(us, us.objects.states).features;
       var states = all.filter(function (f) { return territoryIds.indexOf(f.id) < 0; });
-      // True geographic layout: one conic projection centred on the North Pacific
-      // so Alaska and Hawaii sit where they really are relative to the lower 48.
-      // Drop the handful of far-western Aleutian islands that lie past 180°;
-      // they would otherwise stretch the map and shrink the lower 48.
-      states.forEach(function (f) {
-        if (f.id !== '02' || f.geometry.type !== 'MultiPolygon') return;
-        f.geometry.coordinates = f.geometry.coordinates.filter(function (poly) {
-          return d3.geoCentroid({ type: 'Polygon', coordinates: poly })[0] < 0;
-        });
-      });
-      var fc = { type: 'FeatureCollection', features: states };
-      var W = 975;
-      var proj = d3.geoConicEqualArea().parallels([25, 60]).rotate([118, 0]).fitWidth(W - 12, fc);
+      var proj = d3.geoAlbersUsa().fitExtent([[6, 6], [969, 604]], { type: 'FeatureCollection', features: states });
       var path = d3.geoPath(proj);
-      var bb = path.bounds(fc);
-      var H = Math.ceil(bb[1][1] - bb[0][1]) + 12;
-      proj.translate([proj.translate()[0] + 6 - bb[0][0], proj.translate()[1] + 6 - bb[0][1]]);
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       states.forEach(function (f) {
         var d = path(f);
         if (!d) return;
