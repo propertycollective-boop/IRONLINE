@@ -28,6 +28,11 @@
     --accent-strong: #0E0E0C;
     --accent-ink: #F4F5F1;
     --shadow: rgba(28, 27, 24, 0.14);
+    --map-open: #D9DACF;
+    --map-open-hover: #BDBFB2;
+    --map-worked: #1C1B18;
+    --map-worked-hover: #54524C;
+    --map-stroke: #FFFFFF;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -48,6 +53,16 @@
       --accent-strong: #FFFFFF;
       --accent-ink: #161512;
       --shadow: rgba(0, 0, 0, 0.55);
+    --map-open: #3D3B36;
+    --map-open-hover: #5A5852;
+    --map-worked: #E7E5DF;
+    --map-worked-hover: #B5B1A8;
+    --map-stroke: #161614;
+      --map-open: #3D3B36;
+      --map-open-hover: #5A5852;
+      --map-worked: #E7E5DF;
+      --map-worked-hover: #B5B1A8;
+      --map-stroke: #161614;
     }
   }
   :root[data-theme="dark"] {
@@ -392,23 +407,11 @@
   }
   .reach-map { margin: 0; background: var(--card); padding: 28px 28px 22px; display: flex; flex-direction: column; gap: 18px; }
   #usMap { width: 100%; height: auto; display: block; }
-  .st { fill: var(--panel-2); stroke: var(--card); stroke-width: 0.8; cursor: pointer; transition: fill .15s, opacity .15s; }
-  .st.worked { fill: var(--ink); }
-  .st:hover, .st.is-active { fill: var(--line-strong); }
-  .st.worked:hover, .st.worked.is-active { fill: var(--ink-soft); }
+  .st { fill: var(--map-open); stroke: var(--map-stroke); stroke-width: 0.8; cursor: pointer; transition: fill .15s, opacity .15s; }
+  .st.worked { fill: var(--map-worked); }
+  .st:hover, .st.is-active { fill: var(--map-open-hover); }
+  .st.worked:hover, .st.worked.is-active { fill: var(--map-worked-hover); }
   .map-dim .st:not(.in-region) { opacity: 0.22; }
-  .territory-head {
-    font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-faint);
-    border-top: 1px solid var(--line); padding-top: 14px;
-  }
-  .territory-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
-  .territory { border: 1px solid var(--line); background: var(--bg); padding: 8px 8px 6px; display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
-  .territory svg { width: 100%; height: 56px; display: block; }
-  .territory .st { fill: var(--line-strong); stroke: var(--ink-faint); stroke-width: 0.6; }
-  .territory:hover .st, .territory .st.is-active { fill: var(--ink-faint); }
-  .map-dim .territory .st:not(.in-region) { opacity: 0.22; }
-  .territory span { font-size: 0.72rem; line-height: 1.25; color: var(--ink-soft); text-align: center; }
   .map-readout {
     min-height: 3.2em; border-left: 3px solid var(--accent); padding: 6px 0 6px 14px;
     font-size: 0.92rem; color: var(--ink-soft);
@@ -418,8 +421,8 @@
   .legend-keys { display: flex; flex-direction: column; gap: 10px; }
   .legend-key { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: var(--ink-soft); }
   .legend-key .sw { width: 18px; height: 18px; flex: none; border: 1px solid var(--line-strong); }
-  .legend-key .sw.worked { background: var(--ink); border-color: var(--ink); }
-  .legend-key .sw.open { background: var(--panel-2); }
+  .legend-key .sw.worked { background: var(--map-worked); border-color: var(--map-worked); }
+  .legend-key .sw.open { background: var(--map-open); }
   .legend-stats { border-top: 1px solid var(--line); }
   .legend-stat { display: grid; grid-template-columns: 7.2rem 1fr; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
   .legend-stat .num { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.7rem; line-height: 1; color: var(--ink); }
@@ -445,8 +448,6 @@
   @media (max-width: 560px) {
     .reach-map { padding: 18px 14px 16px; }
     .reach-legend { padding: 22px 18px; }
-    .territory-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .territory svg { height: 48px; }
   }
   .pillar { border-top: 1px solid var(--line-strong); padding-top: 20px; }
   .pillar h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 10px; }
@@ -1022,9 +1023,7 @@
       <div class="reach-layout">
         <figure class="reach-map">
           <svg id="usMap" viewBox="0 0 975 610" role="img" aria-label="Map of the United States. The 24 states where our crews have completed field work are shaded dark: Alabama, Arkansas, Connecticut, Florida, Georgia, Hawaii, Illinois, Indiana, Iowa, Maryland, Massachusetts, Michigan, Missouri, New Jersey, New York, North Carolina, Ohio, Oklahoma, Pennsylvania, South Carolina, Tennessee, Texas, Virginia and Wisconsin."></svg>
-          <div class="territory-head">U.S. Territories</div>
-          <div class="territory-row" id="territoryRow"></div>
-          <div class="map-readout" id="mapReadout" aria-live="polite"><strong>Nationwide coverage</strong>Tap or hover a state or territory, or pick a region.</div>
+          <div class="map-readout" id="mapReadout" aria-live="polite"><strong>Nationwide coverage</strong>Tap or hover a state, or pick a region.</div>
         </figure>
 
         <aside class="reach-legend" aria-label="Map legend">
@@ -1283,7 +1282,6 @@
 <script>
   (function () {
     var svg = document.getElementById('usMap');
-    var row = document.getElementById('territoryRow');
     var readout = document.getElementById('mapReadout');
     if (!svg || !window.d3 || !window.topojson) return;
     var NS = 'http://www.w3.org/2000/svg';
@@ -1299,22 +1297,12 @@
     Object.keys(REGIONS).forEach(function (k) {
       REGIONS[k].ids.forEach(function (id) { regionOf[id] = k; });
     });
-    var TERRITORIES = [
-      { id: '72', label: 'Puerto Rico' },
-      { id: '78', label: 'U.S. Virgin Islands' },
-      { id: '66', label: 'Guam' },
-      { id: '69', label: 'Northern Mariana Islands' },
-      { id: '60', label: 'American Samoa' }
-    ];
-    var territoryIds = TERRITORIES.map(function (t) { return t.id; });
-    var DEFAULT = '<strong>Nationwide coverage</strong>Tap or hover a state or territory, or pick a region.';
+    var territoryIds = ['60', '66', '69', '72', '78'];
+    var DEFAULT = '<strong>Nationwide coverage</strong>Tap or hover a state, or pick a region.';
     var activeRegion = null;
     var nodes = [];
 
-    function displayName(f) {
-      return f.properties.name === 'Commonwealth of the Northern Mariana Islands'
-        ? 'Northern Mariana Islands' : f.properties.name;
-    }
+    function displayName(f) { return f.properties.name; }
 
     function show(f) {
       var r = regionOf[f.id];
@@ -1322,15 +1310,15 @@
       nodes.forEach(function (n) { n.classList.toggle('is-active', n.__id === f.id); });
     }
 
-    function bind(path, f, hitTarget) {
+    function bind(path, f) {
       path.__id = f.id;
       path.__name = displayName(f);
       path.setAttribute('class', 'st' + (regionOf[f.id] ? ' worked' : ''));
       var t = document.createElementNS(NS, 'title');
       t.textContent = displayName(f);
       path.appendChild(t);
-      (hitTarget || path).addEventListener('mouseenter', function () { show(f); });
-      (hitTarget || path).addEventListener('click', function () { show(f); });
+      path.addEventListener('mouseenter', function () { show(f); });
+      path.addEventListener('click', function () { show(f); });
       nodes.push(path);
     }
 
@@ -1367,25 +1355,6 @@
         svg.appendChild(p);
       });
 
-      TERRITORIES.forEach(function (t) {
-        var f = all.find(function (x) { return x.id === t.id; });
-        if (!f) return;
-        var tile = document.createElement('div');
-        tile.className = 'territory';
-        var tsvg = document.createElementNS(NS, 'svg');
-        tsvg.setAttribute('viewBox', '0 0 120 56');
-        tsvg.setAttribute('aria-hidden', 'true');
-        var tp = d3.geoMercator().fitExtent([[6, 6], [114, 50]], f);
-        var p = document.createElementNS(NS, 'path');
-        p.setAttribute('d', d3.geoPath(tp)(f));
-        bind(p, f, tile);
-        tsvg.appendChild(p);
-        var lab = document.createElement('span');
-        lab.textContent = t.label;
-        tile.appendChild(tsvg);
-        tile.appendChild(lab);
-        row.appendChild(tile);
-      });
     }).catch(function () {
       readout.innerHTML = '<strong>24 states, coast to coast</strong>The map could not load right now.';
     });
