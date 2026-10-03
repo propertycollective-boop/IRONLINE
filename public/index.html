@@ -383,50 +383,70 @@
     margin-bottom: 44px;
   }
   .reach-section { border-top: 1px solid var(--line-strong); }
-  .reach-stats {
+  .reach-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 56px;
+    grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
   }
-  .reach-stats .context-box p.note { margin-top: 6px; }
-  .regions-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+  .reach-map { margin: 0; background: var(--card); padding: 28px 28px 22px; display: flex; flex-direction: column; gap: 18px; }
+  #usMap { width: 100%; height: auto; display: block; }
+  .st { fill: var(--panel-2); stroke: var(--card); stroke-width: 0.8; cursor: pointer; transition: fill .15s, opacity .15s; }
+  .st.worked { fill: var(--ink); }
+  .st:hover, .st.is-active { fill: var(--line-strong); }
+  .st.worked:hover, .st.worked.is-active { fill: var(--ink-soft); }
+  .map-dim .st:not(.in-region) { opacity: 0.22; }
+  .territory-head {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint);
+    border-top: 1px solid var(--line); padding-top: 14px;
   }
-  .region-block h4 {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: "Public Sans", sans-serif;
-    font-weight: 600;
-    font-size: 0.98rem;
-    color: var(--ink);
-    border-bottom: 1px solid var(--line-strong);
-    padding-bottom: 10px;
-    margin: 0 0 14px;
+  .territory-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  .territory { border: 1px solid var(--line); background: var(--bg); padding: 8px 8px 6px; display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
+  .territory svg { width: 100%; height: 56px; display: block; }
+  .territory .st { fill: var(--line-strong); stroke: var(--ink-faint); stroke-width: 0.6; }
+  .territory:hover .st, .territory .st.is-active { fill: var(--ink-faint); }
+  .map-dim .territory .st:not(.in-region) { opacity: 0.22; }
+  .territory span { font-size: 0.72rem; line-height: 1.25; color: var(--ink-soft); text-align: center; }
+  .map-readout {
+    min-height: 3.2em; border-left: 3px solid var(--accent); padding: 6px 0 6px 14px;
+    font-size: 0.92rem; color: var(--ink-soft);
   }
-  .region-block h4 .count {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
+  .map-readout strong { color: var(--ink); display: block; font-size: 1rem; }
+  .reach-legend { background: var(--card); padding: 28px 26px; display: flex; flex-direction: column; gap: 22px; }
+  .legend-keys { display: flex; flex-direction: column; gap: 10px; }
+  .legend-key { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: var(--ink-soft); }
+  .legend-key .sw { width: 18px; height: 18px; flex: none; border: 1px solid var(--line-strong); }
+  .legend-key .sw.worked { background: var(--ink); border-color: var(--ink); }
+  .legend-key .sw.open { background: var(--panel-2); }
+  .legend-stats { border-top: 1px solid var(--line); }
+  .legend-stat { display: grid; grid-template-columns: 7.2rem 1fr; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .legend-stat .num { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.7rem; line-height: 1; color: var(--ink); }
+  .legend-stat .num.word { font-size: 1.15rem; }
+  .legend-stat p { font-size: 0.86rem; color: var(--ink-soft); }
+  .region-filter { display: flex; flex-direction: column; }
+  .region-filter .lbl { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+  .region-btn {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    width: 100%; background: none; border: none; border-top: 1px solid var(--line);
+    padding: 11px 2px; font: inherit; font-size: 0.93rem; color: var(--ink); cursor: pointer; text-align: left;
   }
-  .region-block .tag-grid { margin-bottom: 0; }
-  .reach-footnote {
-    margin-top: 32px;
-    font-size: 0.85rem;
-    color: var(--ink-faint);
-  }
+  .region-btn:last-child { border-bottom: 1px solid var(--line); }
+  .region-btn .count { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
+  .region-btn:hover { background: var(--bg); }
+  .region-btn[aria-pressed="true"] { background: var(--ink); color: var(--card); padding-left: 10px; padding-right: 10px; }
+  .region-btn[aria-pressed="true"] .count { color: var(--panel-2); }
+  .region-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .reach-footnote { font-size: 0.84rem; color: var(--ink-faint); }
   @media (max-width: 980px) {
-    .reach-stats { grid-template-columns: 1fr; }
-    .regions-grid { grid-template-columns: 1fr 1fr; }
+    .reach-layout { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 560px) {
-    .regions-grid { grid-template-columns: 1fr; }
+    .reach-map { padding: 18px 14px 16px; }
+    .reach-legend { padding: 22px 18px; }
+    .territory-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .territory svg { height: 48px; }
   }
   .pillar { border-top: 1px solid var(--line-strong); padding-top: 20px; }
   .pillar h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 10px; }
@@ -999,76 +1019,38 @@
         <p class="intro">Long before Ironline existed as a company, this team's field crews were rotating through outages, repairs, and turnarounds at industrial sites across the country. That reach is the foundation this business was built on.</p>
       </div>
 
-      <div class="reach-stats">
-        <div class="context-box">
-          <div class="eyebrow" style="margin-bottom:12px;">Footprint</div>
-          <div class="num tabular">24 States</div>
-          <p class="note">Field experience spans coast to coast, Hawaii included.</p>
-        </div>
-        <div class="context-box">
-          <div class="eyebrow" style="margin-bottom:12px;">Locations</div>
-          <div class="num tabular">90+</div>
-          <p class="note">Industrial and processing sites where our people have completed work.</p>
-        </div>
-        <div class="context-box">
-          <div class="eyebrow" style="margin-bottom:12px;">Tenure</div>
-          <div class="num tabular">Career-Long</div>
-          <p class="note">Rotational field assignments, not a one-off project team.</p>
-        </div>
-      </div>
+      <div class="reach-layout">
+        <figure class="reach-map">
+          <svg id="usMap" viewBox="0 0 975 610" role="img" aria-label="Map of the United States. The 24 states where our crews have completed field work are shaded dark: Alabama, Arkansas, Connecticut, Florida, Georgia, Hawaii, Illinois, Indiana, Iowa, Maryland, Massachusetts, Michigan, Missouri, New Jersey, New York, North Carolina, Ohio, Oklahoma, Pennsylvania, South Carolina, Tennessee, Texas, Virginia and Wisconsin."></svg>
+          <div class="territory-head">U.S. Territories</div>
+          <div class="territory-row" id="territoryRow"></div>
+          <div class="map-readout" id="mapReadout" aria-live="polite"><strong>Nationwide coverage</strong>Tap or hover a state or territory, or pick a region.</div>
+        </figure>
 
-      <div class="regions-grid">
-        <div class="region-block">
-          <h4>Northeast <span class="count">5 states</span></h4>
-          <div class="tag-grid">
-            <span class="tag">Connecticut</span>
-            <span class="tag">Massachusetts</span>
-            <span class="tag">New Jersey</span>
-            <span class="tag">New York</span>
-            <span class="tag">Pennsylvania</span>
+        <aside class="reach-legend" aria-label="Map legend">
+          <div class="legend-keys">
+            <div class="legend-key"><span class="sw worked"></span>Completed field work</div>
+            <div class="legend-key"><span class="sw open"></span>Within our nationwide service area</div>
           </div>
-        </div>
-        <div class="region-block">
-          <h4>Mid-Atlantic &amp; Southeast <span class="count">6 states</span></h4>
-          <div class="tag-grid">
-            <span class="tag">Virginia</span>
-            <span class="tag">Maryland</span>
-            <span class="tag">North Carolina</span>
-            <span class="tag">South Carolina</span>
-            <span class="tag">Georgia</span>
-            <span class="tag">Florida</span>
+
+          <div class="legend-stats">
+            <div class="legend-stat"><span class="num tabular">24</span><p>States where our crews have completed work, coast to coast and Hawaii included.</p></div>
+            <div class="legend-stat"><span class="num tabular">90+</span><p>Industrial and processing sites where our people have completed work.</p></div>
+            <div class="legend-stat"><span class="num word">Career-Long</span><p>Rotational field assignments, not a one-off project team.</p></div>
           </div>
-        </div>
-        <div class="region-block">
-          <h4>Midwest &amp; Great Lakes <span class="count">7 states</span></h4>
-          <div class="tag-grid">
-            <span class="tag">Ohio</span>
-            <span class="tag">Michigan</span>
-            <span class="tag">Indiana</span>
-            <span class="tag">Illinois</span>
-            <span class="tag">Wisconsin</span>
-            <span class="tag">Iowa</span>
-            <span class="tag">Missouri</span>
+
+          <div class="region-filter" role="group" aria-label="Highlight a region">
+            <span class="lbl">Highlight a region</span>
+            <button type="button" class="region-btn" data-region="ne" aria-pressed="false">Northeast <span class="count">5 states</span></button>
+            <button type="button" class="region-btn" data-region="mase" aria-pressed="false">Mid-Atlantic &amp; Southeast <span class="count">6 states</span></button>
+            <button type="button" class="region-btn" data-region="mw" aria-pressed="false">Midwest &amp; Great Lakes <span class="count">7 states</span></button>
+            <button type="button" class="region-btn" data-region="sc" aria-pressed="false">South &amp; Central <span class="count">5 states</span></button>
+            <button type="button" class="region-btn" data-region="pac" aria-pressed="false">Pacific <span class="count">1 state</span></button>
           </div>
-        </div>
-        <div class="region-block">
-          <h4>South &amp; Central <span class="count">5 states</span></h4>
-          <div class="tag-grid">
-            <span class="tag">Texas</span>
-            <span class="tag">Oklahoma</span>
-            <span class="tag">Arkansas</span>
-            <span class="tag">Tennessee</span>
-            <span class="tag">Alabama</span>
-          </div>
-        </div>
-        <div class="region-block">
-          <h4>Pacific <span class="count">1 state</span></h4>
-          <div class="tag-grid">
-            <span class="tag">Hawaii</span>
-          </div>
-        </div>
+
+          <p class="reach-footnote">Plus completed work at facilities in Ontario and Quebec, Canada.</p>
+        </aside>
       </div>
-      <p class="reach-footnote">Plus completed work at facilities in Ontario and Quebec, Canada.</p>
     </div>
   </section>
 
@@ -1295,6 +1277,121 @@
     </div>
   </div>
 </footer>
+
+<script src="vendor/d3.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script>
+  (function () {
+    var svg = document.getElementById('usMap');
+    var row = document.getElementById('territoryRow');
+    var readout = document.getElementById('mapReadout');
+    if (!svg || !window.d3 || !window.topojson) return;
+    var NS = 'http://www.w3.org/2000/svg';
+
+    var REGIONS = {
+      ne:   { name: 'Northeast', ids: ['09', '25', '34', '36', '42'] },
+      mase: { name: 'Mid-Atlantic & Southeast', ids: ['51', '24', '37', '45', '13', '12'] },
+      mw:   { name: 'Midwest & Great Lakes', ids: ['39', '26', '18', '17', '55', '19', '29'] },
+      sc:   { name: 'South & Central', ids: ['48', '40', '05', '47', '01'] },
+      pac:  { name: 'Pacific', ids: ['15'] }
+    };
+    var regionOf = {};
+    Object.keys(REGIONS).forEach(function (k) {
+      REGIONS[k].ids.forEach(function (id) { regionOf[id] = k; });
+    });
+    var TERRITORIES = [
+      { id: '72', label: 'Puerto Rico' },
+      { id: '78', label: 'U.S. Virgin Islands' },
+      { id: '66', label: 'Guam' },
+      { id: '69', label: 'Northern Mariana Islands' },
+      { id: '60', label: 'American Samoa' }
+    ];
+    var territoryIds = TERRITORIES.map(function (t) { return t.id; });
+    var DEFAULT = '<strong>Nationwide coverage</strong>Tap or hover a state or territory, or pick a region.';
+    var activeRegion = null;
+    var nodes = [];
+
+    function displayName(f) {
+      return f.properties.name === 'Commonwealth of the Northern Mariana Islands'
+        ? 'Northern Mariana Islands' : f.properties.name;
+    }
+
+    function show(f) {
+      var r = regionOf[f.id];
+      readout.innerHTML = '<strong>' + displayName(f) + '</strong>' +
+        (r ? 'Completed field work &middot; ' + REGIONS[r].name : 'Within our nationwide service area');
+      nodes.forEach(function (n) { n.classList.toggle('is-active', n.__id === f.id); });
+    }
+
+    function bind(path, f, hitTarget) {
+      path.__id = f.id;
+      path.__name = displayName(f);
+      path.setAttribute('class', 'st' + (regionOf[f.id] ? ' worked' : ''));
+      var t = document.createElementNS(NS, 'title');
+      t.textContent = displayName(f);
+      path.appendChild(t);
+      (hitTarget || path).addEventListener('mouseenter', function () { show(f); });
+      (hitTarget || path).addEventListener('click', function () { show(f); });
+      nodes.push(path);
+    }
+
+    function setRegion(key) {
+      activeRegion = activeRegion === key ? null : key;
+      document.querySelectorAll('.region-btn').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.region === activeRegion));
+      });
+      document.querySelector('.reach-map').classList.toggle('map-dim', !!activeRegion);
+      nodes.forEach(function (n) {
+        n.classList.toggle('in-region', !!activeRegion && regionOf[n.__id] === activeRegion);
+        n.classList.remove('is-active');
+      });
+      if (!activeRegion) { readout.innerHTML = DEFAULT; return; }
+      var names = nodes.filter(function (n) { return regionOf[n.__id] === activeRegion; })
+        .map(function (n) { return n.__name; }).sort();
+      readout.innerHTML = '<strong>' + REGIONS[activeRegion].name + '</strong>' + names.join(', ');
+    }
+    document.querySelectorAll('.region-btn').forEach(function (b) {
+      b.addEventListener('click', function () { setRegion(b.dataset.region); });
+    });
+
+    fetch('vendor/states-10m.json').then(function (r) { return r.json(); }).then(function (us) {
+      var all = topojson.feature(us, us.objects.states).features;
+      var states = all.filter(function (f) { return territoryIds.indexOf(f.id) < 0; });
+      var proj = d3.geoAlbersUsa().fitExtent([[6, 6], [969, 604]], { type: 'FeatureCollection', features: states });
+      var path = d3.geoPath(proj);
+      states.forEach(function (f) {
+        var d = path(f);
+        if (!d) return;
+        var p = document.createElementNS(NS, 'path');
+        p.setAttribute('d', d);
+        bind(p, f);
+        svg.appendChild(p);
+      });
+
+      TERRITORIES.forEach(function (t) {
+        var f = all.find(function (x) { return x.id === t.id; });
+        if (!f) return;
+        var tile = document.createElement('div');
+        tile.className = 'territory';
+        var tsvg = document.createElementNS(NS, 'svg');
+        tsvg.setAttribute('viewBox', '0 0 120 56');
+        tsvg.setAttribute('aria-hidden', 'true');
+        var tp = d3.geoMercator().fitExtent([[6, 6], [114, 50]], f);
+        var p = document.createElementNS(NS, 'path');
+        p.setAttribute('d', d3.geoPath(tp)(f));
+        bind(p, f, tile);
+        tsvg.appendChild(p);
+        var lab = document.createElement('span');
+        lab.textContent = t.label;
+        tile.appendChild(tsvg);
+        tile.appendChild(lab);
+        row.appendChild(tile);
+      });
+    }).catch(function () {
+      readout.innerHTML = '<strong>24 states, coast to coast</strong>The map could not load right now.';
+    });
+  })();
+</script>
 
 <script>
   (function () {
