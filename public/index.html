@@ -1029,8 +1029,8 @@
 
         <aside class="reach-legend" aria-label="Map legend">
           <div class="legend-keys">
-            <div class="legend-key"><span class="sw worked"></span>Completed field work</div>
-            <div class="legend-key"><span class="sw open"></span>Within our nationwide service area</div>
+            <div class="legend-key"><span class="sw worked"></span>Project experience</div>
+            <div class="legend-key"><span class="sw open"></span>Available</div>
           </div>
 
           <div class="legend-stats">
@@ -1318,8 +1318,7 @@
 
     function show(f) {
       var r = regionOf[f.id];
-      readout.innerHTML = '<strong>' + displayName(f) + '</strong>' +
-        (r ? 'Completed field work &middot; ' + REGIONS[r].name : 'Within our nationwide service area');
+      readout.innerHTML = '<strong>' + displayName(f) + '</strong>' + (r ? 'Project experience' : 'Available');
       nodes.forEach(function (n) { n.classList.toggle('is-active', n.__id === f.id); });
     }
 
